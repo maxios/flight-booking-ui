@@ -1,18 +1,11 @@
-import storage from 'redux-persist/lib/storage';
-
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
-import Foobar from './foobar';
-
-const persistI18nConfig = {
-  key: 'foobar',
-  storage,
-  whitelist: ['locale']
-}
+import Users from './users';
 
 const createRootReducer = history =>
   combineReducers({
-    foobar: Foobar,
+    users: Users,
     router: connectRouter(history),
   });
+
 export default createRootReducer;

@@ -1,14 +1,13 @@
+import { authenticate as authenticateApi } from '@/api';
 import Cookies from 'js-cookie';
-import { me } from '@/api';
 
-export const fetchMe = () => {
+export const authenticate = data => {
   return dispatch => new Promise((resolve, reject) => {
-    const token = Cookies.get(process.env.AUTH_COOKIE);
-
-    me(token)
+    authenticateApi(data)
       .then(res => {
+        Cookies.set(process.env.AUTH_COOKIE, res.data.auth_token)
         dispatch({
-          type: 'fetch/me',
+          type: 'authenticate',
           payload: res.data
         })
         resolve(res);

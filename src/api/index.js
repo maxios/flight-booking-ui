@@ -1,8 +1,12 @@
-import express from 'express';
-import watsonRouter from './watson.route';
+import axios from 'axios';
 
-const router = express.Router()
-router.get('/status', (req, res) => { res.send({status: 'OK'})}) // api status
-router.use('/watson', watsonRouter) // mount auth paths
+export const backend = axios.create({
+  baseURL: `${process.env.API_HOST}/api`,
+  headers: {
+    'X-Custom-Header': 'foobar'
+  },
+  timeout: 3000
+});
 
-export default router;
+export const authenticate = data =>
+  backend.post('/authenticate', data)
