@@ -34,12 +34,12 @@ export const App = withRouter(() => {
 
   return (
     <Switch>
-      <Layout>
         <Route exact path="/login" component={LoginPage} />
         <AuthenticatedRoute>
-          <Route exact path="/admin" component={AdminPage} />
+          <Layout>
+            <Route exact path="/admin" component={AdminPage} />
+          </Layout>
         </AuthenticatedRoute>
-      </Layout>
     </Switch>
   );
 });
