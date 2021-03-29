@@ -48,7 +48,6 @@ export const apiRoutes = [
   ...generateApiRoutes('flights')
 ]
 
-console.log(apiRoutes);
 export const backend = axios.create({
   baseURL: `${process.env.API_HOST}/api`,
   headers: {
@@ -77,3 +76,4 @@ export const apis = R.mergeAll(R.map(api => ({
   }
 })
 )(apiRoutes))
+console.log(apis);

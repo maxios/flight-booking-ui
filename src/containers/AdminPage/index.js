@@ -1,8 +1,13 @@
 import React from 'react'
 
-const AdminPage = () => {
+const AdminPage = props => {
+  React.useEffect(() => {
+    console.log('admin page loaded')
+  } ,[])
   return (
-    <div> foobar </div>
+    <div>
+      {props.children}
+    </div>
   )
 }
 

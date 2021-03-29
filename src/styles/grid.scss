@@ -129,3 +129,7 @@ $large-rem: 1.5rem;
   .medium-md-gutter[dir="rtl"] > div:first-child { margin-left: 25px; margin-right: 0; }
   .medium-md-gutter[dir="rtl"] > div:last-child { margin-right: 25px; margin-left: 0; }
 }
+
+.d-flex {
+  display: flex;
+}

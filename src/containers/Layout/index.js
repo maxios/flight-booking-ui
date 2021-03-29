@@ -3,7 +3,7 @@ import Sidebar from '@/containers/Sidebar';
 
 const Layout = props => {
   return (
-    <div className="foobar__layout">
+    <div className="foobar__layout d-flex">
       <Sidebar/>
       {props.children}
     </div>

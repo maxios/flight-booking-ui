@@ -6,6 +6,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import Layout from '@/containers/Layout';
 import LoginPage from '@/containers/LoginPage';
 import AdminPage from '@/containers/AdminPage';
+import AeroplanesPage from '@/containers/AeroplanesPage';
 
 export const AuthenticatedRoute = withRouter(props => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export const App = withRouter(() => {
     if (!Cookies.get(process.env.AUTH_COOKIE)) {
       dispatch(push('/login'))
     } else {
-      dispatch(push('/admin'))
+      dispatch(push('/admin/aeroplanes'))
     }
   }, [])
 
@@ -36,9 +37,11 @@ export const App = withRouter(() => {
     <Switch>
         <Route exact path="/login" component={LoginPage} />
         <AuthenticatedRoute>
-          <Layout>
-            <Route exact path="/admin" component={AdminPage} />
-          </Layout>
+          <Route path="/admin">
+            <Layout>
+              <Route exact path="/admin/aeroplanes" component={AeroplanesPage}/>
+            </Layout>
+          </Route>
         </AuthenticatedRoute>
     </Switch>
   );
